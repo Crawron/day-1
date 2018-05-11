@@ -1,10 +1,12 @@
-import { JSONLoader, MeshLambertMaterial, Mesh, LoadingManager } from "three"
-import { Fez } from "./Fez"
-import { animate } from "./Animate"
-import { mainScene } from "./Scene"
-import { hemisphereLight } from "./Lighting"
+import { JSONLoader, MeshLambertMaterial, Mesh, LoadingManager, Scene } from "three"
+import { Fez } from "./Classes/Fez"
+
+import { hemisphereLight } from "./lighting"
+import { renderer } from "./renderer"
+import { mainCamera } from "./camera"
 
 
+export const mainScene = new Scene
 export let fez: Fez
 
 const loadingManager = new LoadingManager
@@ -39,6 +41,13 @@ function loadScene() {
 
 	// Meshes
 	mainScene.add(fez.mesh)
+}
+
+function animate() {
+	const frame = requestAnimationFrame(animate)
+
+	fez.update(frame)
+	renderer.render(mainScene, mainCamera)
 }
 
 init()
