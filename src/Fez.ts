@@ -1,22 +1,16 @@
 import { Mesh, Material, Geometry, MeshLambertMaterial, JSONLoader, CubicInterpolant } from "three"
 import { mainScene } from './Scene'
 import { Tween } from '@tweenjs/tween.js'
+import { Box } from "./Box";
 
 
-export class Fez {
+export class Fez extends Box {
 	mesh: Mesh
-	tween: Tween
 
 	constructor(mesh: Mesh) {
+		super()
 		this.mesh = mesh
-		mainScene.add(this.mesh)
-
 		this.tween = new Tween(this.mesh.rotation)
-	}
-
-	update(frame: number) {
-		if (this.mesh) {
-			this.mesh.rotateY(0.001)
-		}
+		mainScene.add(this.mesh)
 	}
 }
