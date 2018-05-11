@@ -1,9 +1,9 @@
-import { Scene } from "three"
-import { box } from "./Box"
-import { hemisphereLight, directionalLight } from './Lighting'
+import { Scene, AxesHelper } from "three"
+import { hemisphereLight, directionalLight } from "./Lighting"
 
 
-const scene = new Scene
-scene.add(box.mesh, hemisphereLight, directionalLight)
+const helper = new AxesHelper(10)
+export const mainScene = new Scene
 
-export const mainScene = scene
+mainScene.add(helper)
+mainScene.add(hemisphereLight, directionalLight)

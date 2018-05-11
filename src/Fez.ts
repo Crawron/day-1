@@ -15,7 +15,7 @@ class Fez {
 
 		// Mesh
 		const loader = new JSONLoader
-		loader.load('./models/fez.json', (geometry: Geometry) => {
+		loader.load('../assets/models/fez.json', (geometry: Geometry) => {
 			this.mesh = new Mesh(geometry, materials)
 			mainScene.add(this.mesh)
 		})
