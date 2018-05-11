@@ -1,30 +1,22 @@
-import { Mesh, Material, Geometry, MeshLambertMaterial, JSONLoader } from "three"
+import { Mesh, Material, Geometry, MeshLambertMaterial, JSONLoader, CubicInterpolant } from "three"
 import { mainScene } from './Scene'
+import { Tween } from '@tweenjs/tween.js'
 
 
-class Fez {
-	mesh?: Mesh
+export class Fez {
+	mesh: Mesh
+	tween: Tween
 
-	constructor() {
-		// Material
-		const redMaterial = new MeshLambertMaterial({ color: "red" })
-		const yellowMaterial = new MeshLambertMaterial({ color: "yellow" })
-		const shadedRedMaterial = new MeshLambertMaterial({ color: 0xaa0000 })
+	constructor(mesh: Mesh) {
+		this.mesh = mesh
+		mainScene.add(this.mesh)
 
-		const materials = [redMaterial, yellowMaterial, shadedRedMaterial]
-
-		// Mesh
-		const loader = new JSONLoader
-		loader.load('../assets/models/fez.json', (geometry: Geometry) => {
-			this.mesh = new Mesh(geometry, materials)
-			mainScene.add(this.mesh)
-		})
+		this.tween = new Tween(this.mesh.rotation)
 	}
 
-	update() {
-		if (this.mesh)
-			this.mesh.rotateY(.01)
+	update(frame: number) {
+		if (this.mesh) {
+			this.mesh.rotateY(0.001)
+		}
 	}
 }
-
-export const fez = new Fez()
