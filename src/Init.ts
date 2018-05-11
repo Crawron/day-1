@@ -1,8 +1,8 @@
-import { Fez } from "./Fez"
 import { JSONLoader, MeshLambertMaterial, Mesh, LoadingManager } from "three"
+import { Fez } from "./Fez"
 import { animate } from "./Animate"
-import { mainScene } from "./Scene";
-import { hemisphereLight } from "./Lighting";
+import { mainScene } from "./Scene"
+import { hemisphereLight } from "./Lighting"
 
 
 export let fez: Fez
