@@ -2,6 +2,7 @@ import uglify from 'rollup-plugin-uglify'
 import typescript from 'rollup-plugin-typescript'
 import commonjs from 'rollup-plugin-commonjs'
 import nodeResolve from 'rollup-plugin-node-resolve'
+import progress from 'rollup-plugin-progress'
 import path from 'path'
 
 const production = !process.env.ROLLUP_WATCH
@@ -17,6 +18,7 @@ export default {
 		nodeResolve(),
 		commonjs({ sourceMap: true }),
 		typescript(),
+		progress(),
 		production && uglify()
 	]
 }
