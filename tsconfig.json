@@ -5,6 +5,7 @@
     "sourceMap": true,
     "outDir": "./build/",
     "rootDir": "./src/",
+    "strict": true,
     "removeComments": true,
     "noImplicitAny": true
   }
