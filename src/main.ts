@@ -5,9 +5,9 @@ import { fez } from "./Fez"
 
 
 function animate() {
-	requestAnimationFrame(animate)
+	const frame = requestAnimationFrame(animate)
 
-	fez.update()
+	fez.update(frame)
 	renderer.render(mainScene, mainCamera)
 }
 
