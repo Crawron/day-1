@@ -1,4 +1,4 @@
-import { BoxBufferGeometry, Mesh, Material, BufferGeometry, MeshStandardMaterial } from "three"
+import { BoxBufferGeometry, Mesh, Material, BufferGeometry, MeshLambertMaterial } from "three"
 import { Tween } from "@tweenjs/tween.js";
 
 
@@ -7,8 +7,8 @@ export class Box {
 	tween: Tween
 
 	constructor() {
-		const geometry = new BoxBufferGeometry(1, 1, 1)
-		const material = new MeshStandardMaterial({ color: 0x50bbff })
+		const geometry = new BoxBufferGeometry(3, 3, 3)
+		const material = new MeshLambertMaterial
 
 		this.mesh = new Mesh(geometry, material)
 		this.tween = new Tween(this.mesh.rotation)
