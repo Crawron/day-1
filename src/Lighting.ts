@@ -1,7 +1,5 @@
 import { HemisphereLight, DirectionalLight } from 'three'
 
 
-export const hemisphereLight = new HemisphereLight(0xffffff, 0x101010, 1)
-
-export const directionalLight = new DirectionalLight(0xffffff)
-directionalLight.position.set(0, 10, 2)
+export const hemisphereLight = new HemisphereLight(0xffeeff, 0x1010ff, 1.1)
+hemisphereLight.position.set(5, 20, 10)
