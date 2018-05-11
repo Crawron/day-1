@@ -1,14 +1,3 @@
-import { renderer } from "./Renderer"
-import { mainScene } from "./Scene"
-import { mainCamera } from "./Camera"
-import { fez } from "./Fez"
+import { init } from "./Init"
 
-
-function animate() {
-	const frame = requestAnimationFrame(animate)
-
-	fez.update(frame)
-	renderer.render(mainScene, mainCamera)
-}
-
-animate()
+init()
