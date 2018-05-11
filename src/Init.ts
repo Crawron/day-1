@@ -33,5 +33,5 @@ function loadFezMesh() {
 }
 
 function loadScene() {
-	mainScene.add(hemisphereLight)
+	mainScene.add(hemisphereLight, fez.mesh)
 }
