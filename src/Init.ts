@@ -1,12 +1,17 @@
 import { Fez } from "./Fez"
 import { JSONLoader, MeshLambertMaterial, Mesh, LoadingManager } from "three"
 import { animate } from "./Animate"
+import { mainScene } from "./Scene";
+import { hemisphereLight } from "./Lighting";
 
 
 export let fez: Fez
 
 const loadingManager = new LoadingManager
-loadingManager.onProgress = animate
+loadingManager.onProgress = () => {
+	loadScene()
+	animate()
+}
 
 export function init() {
 	loadFezMesh()
@@ -25,4 +30,8 @@ function loadFezMesh() {
 	loader.load('./assets/models/fez.json', geometry => {
 		fez = new Fez(new Mesh(geometry, materials))
 	})
+}
+
+function loadScene() {
+	mainScene.add(hemisphereLight)
 }
