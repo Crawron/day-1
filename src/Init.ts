@@ -14,8 +14,8 @@ export function init() {
 
 function loadFezMesh() {
 	// Materials
-	const redMaterial = new MeshLambertMaterial({ color: "red" })
-	const redShadedMaterial = new MeshLambertMaterial({ color: 0xcc0000 })
+	const redMaterial = new MeshLambertMaterial({ color: 0xdd1111 })
+	const redShadedMaterial = new MeshLambertMaterial({ color: 0xcc0505 })
 	const yellowMaterial = new MeshLambertMaterial({ color: "yellow" })
 
 	const materials = [redMaterial, yellowMaterial, redShadedMaterial]
