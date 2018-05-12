@@ -16,7 +16,7 @@ export class Box {
 
 	update(frame: number) {
 		if (this.mesh) {
-			this.mesh.position.y = Math.sin(frame / 50) / 4
+			this.mesh.position.y = Math.sin(frame / 50 + this.offset) / 4
 
 			if (frame % 120 === 0) this.rotate()
 		}
