@@ -18,7 +18,10 @@ export default {
 	plugins: [
 		nodeResolve(),
 		commonjs({
-			sourceMap: true
+			sourceMap: true,
+			namedExports: {
+				'animejs': ['anime']
+			}
 		}),
 		typescript(),
 		progress(),

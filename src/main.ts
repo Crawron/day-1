@@ -1,5 +1,8 @@
 import { JSONLoader, MeshLambertMaterial, Mesh, LoadingManager, Scene } from "three"
+
+import { Box } from "./Classes/Box"
 import { Fez } from "./Classes/Fez"
+import { BoxGrid } from "./Classes/Grid";
 
 import { hemisphereLight } from "./lighting"
 import { renderer } from "./renderer"
@@ -8,6 +11,7 @@ import { mainCamera } from "./camera"
 
 export const mainScene = new Scene
 export let fez: Fez
+let box: Box
 
 const loadingManager = new LoadingManager
 loadingManager.onProgress = () => {
@@ -16,6 +20,7 @@ loadingManager.onProgress = () => {
 }
 
 export function init() {
+	box = new Box()
 	loadFezMesh()
 }
 
@@ -40,7 +45,7 @@ function loadScene() {
 	mainScene.add(hemisphereLight)
 
 	// Meshes
-	mainScene.add(fez.mesh)
+	mainScene.add(fez.mesh/*, box.mesh*/)
 }
 
 function animate() {
