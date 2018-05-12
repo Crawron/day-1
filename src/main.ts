@@ -2,7 +2,8 @@ import { JSONLoader, MeshLambertMaterial, Mesh, LoadingManager, Scene } from "th
 
 import { Box } from "./Classes/Box"
 import { Fez } from "./Classes/Fez"
-import { BoxGrid } from "./Classes/Grid";
+import { BoxGrid } from "./Classes/Grid"
+import { Time } from "./Classes/Time"
 
 import { hemisphereLight } from "./lighting"
 import { renderer } from "./renderer"
@@ -11,17 +12,15 @@ import { mainCamera } from "./camera"
 
 export const mainScene = new Scene
 export let fez: Fez
-let box: Box
+let grid: BoxGrid
+
+let time: Time
 
 const loadingManager = new LoadingManager
 loadingManager.onProgress = () => {
+	grid = new BoxGrid(fez)
 	loadScene()
 	animate()
-}
-
-export function init() {
-	box = new Box(0)
-	loadFezMesh()
 }
 
 function loadFezMesh() {
@@ -33,11 +32,13 @@ function loadFezMesh() {
 	const materials = [redMaterial, yellowMaterial, redShadedMaterial]
 
 	// Mesh
+	let mesh: Mesh
 	const loader = new JSONLoader(loadingManager)
 	loader.load('./assets/models/fez.json', geometry => {
-		const mesh = new Mesh(geometry, materials)
-		fez = new Fez(mesh)
+		mesh = new Mesh(geometry, materials)
 	})
+
+	return
 }
 
 function loadScene() {
@@ -45,13 +46,22 @@ function loadScene() {
 	mainScene.add(hemisphereLight)
 
 	// Meshes
-	mainScene.add(fez.mesh/*, box.mesh*/)
+	//mainScene.add(fez.mesh)
+	grid.boxes.forEach(box => mainScene.add(box.mesh))
+}
+
+function init() {
+	time = new Time
+	loadFezMesh()
 }
 
 function animate() {
 	const frame = requestAnimationFrame(animate)
+	time.updateFrameTime()
 
-	fez.update(frame)
+	console.log(time.elapsedTime)
+
+	grid.update(frame)
 	renderer.render(mainScene, mainCamera)
 }
 

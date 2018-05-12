@@ -6,7 +6,7 @@
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "dev": "npm-run-all --parallel start watch",
-    "start": "serve build -l"
+    "start": "serve build"
   },
   "repository": {
     "url": "https://github.com/Crawron/threets-template"
