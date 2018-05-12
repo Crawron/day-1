@@ -1,5 +1,4 @@
 import { Mesh } from "three"
-//import TWEEN from '@tweenjs/tween.js'
 import { Box } from "./Box";
 
 
