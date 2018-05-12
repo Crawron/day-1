@@ -1,5 +1,5 @@
 import { BoxBufferGeometry, Mesh, Material, BufferGeometry, MeshLambertMaterial } from "three"
-import { tween } from 'popmotion'
+import { tween, easing } from 'popmotion'
 
 
 export class Box {
@@ -25,7 +25,8 @@ export class Box {
 	rotate() {
 		tween({
 			from: this.mesh.rotation.y,
-			to: this.mesh.rotation.y + Math.PI / 2
+			to: this.mesh.rotation.y + Math.PI / 2,
+			ease: easing.easeOut
 		}).start((v: number) => { this.mesh.rotation.y = v })
 	}
 }
