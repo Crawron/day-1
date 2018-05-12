@@ -4,13 +4,14 @@ import { tween } from 'popmotion'
 
 export class Box {
 	mesh: Mesh
+	offset: number
 
-
-	constructor() {
+	constructor(offset: number) {
 		const geometry = new BoxBufferGeometry(3, 3, 3)
 		const material = new MeshLambertMaterial
 
 		this.mesh = new Mesh(geometry, material)
+		this.offset = offset
 	}
 
 	update(frame: number) {

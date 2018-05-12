@@ -20,7 +20,7 @@ loadingManager.onProgress = () => {
 }
 
 export function init() {
-	box = new Box()
+	box = new Box(0)
 	loadFezMesh()
 }
 

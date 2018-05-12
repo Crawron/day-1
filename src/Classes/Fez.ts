@@ -5,7 +5,7 @@ import { Box } from "./Box";
 
 export class Fez extends Box {
 	constructor(mesh: Mesh) {
-		super()
+		super(0)
 		this.mesh = mesh
 	}
 }
