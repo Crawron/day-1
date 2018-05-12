@@ -22,6 +22,6 @@ export class BoxGrid {
 	}
 
 	update(frame: number) {
-		this.boxes.forEach(box => box.update(frame))
+		this.boxes.forEach(box => box.animate(frame))
 	}
 }

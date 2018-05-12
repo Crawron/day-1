@@ -1,11 +1,14 @@
 import { BoxBufferGeometry, Mesh, Material, BufferGeometry, MeshLambertMaterial, Vector3 } from "three"
-import { tween, easing } from 'popmotion'
+import { Time } from "./Time"
 
 
 export class Box {
-	mesh: Mesh
-	turns: number
+	turns = 0
 	offset: number
+	rotating = false
+
+	mesh: Mesh
+	time = new Time()
 
 	constructor(x: number, y: number, z: number) {
 		const geometry = new BoxBufferGeometry(3, 3, 3)
@@ -13,28 +16,28 @@ export class Box {
 
 		this.mesh = new Mesh(geometry, material)
 		this.mesh.position.set(x, y, z)
-		this.turns = 0
 
-		this.offset = this.mesh.position.distanceTo(new Vector3(0, 0, 0))
-		setTimeout(() =>
-			setInterval(() => {
-				this.rotate()
-				this.turns++
-			}, 2000), this.offset * 5)
+		this.offset = this.mesh.position.distanceTo(new Vector3(0, 0, 0)) * 2
+
+		this.rotate()
 	}
 
-	update(frame: number) {
-		if (this.mesh) {
-			this.mesh.position.y = Math.sin((-frame + this.offset) / 50) / 4
-		}
+	/** Gets called every frame */
+	animate(time: number) {
+		this.time.update()
+		const oscilationSpeed = .002
+		const amplitude = .25
+
+		time += this.offset
+		time *= -oscilationSpeed
+
+		this.mesh.position.y = Math.sin(time) * amplitude
+		if (!this.rotating) this.rotate()
 	}
 
 	rotate() {
-		tween({
-			from: this.turns * Math.PI / 2,
-			to: (this.turns + 1) * Math.PI / 2,
-			ease: easing.easeOut,
-			duration: 700
-		}).start((v: number) => { this.mesh.rotation.y = v })
+		this.rotating = true
+		console.log("turning")
+
 	}
 }
