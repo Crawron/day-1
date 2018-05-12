@@ -18,10 +18,7 @@ export default {
 	plugins: [
 		nodeResolve(),
 		commonjs({
-			sourceMap: true,
-			namedExports: {
-				'@tweenjs/tween.js': ['Tween']
-			}
+			sourceMap: true
 		}),
 		typescript(),
 		progress(),
