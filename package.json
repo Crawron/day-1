@@ -12,7 +12,7 @@
     "url": "https://github.com/Crawron/threets-template"
   },
   "dependencies": {
-    "serve": "^6.5.6",
+    "serve": "^6.5.7",
     "three": "^0.92.0"
   },
   "devDependencies": {
